@@ -43,7 +43,7 @@ Working at NuxtLabs. Author of Nuxt UI.
   </div>
 </div>
 
-<img src="/nuxt.svg" width="460" height="460" class="size-[80vh] absolute -bottom-[22vh] -right-[18vh] opacity-75" />
+<img src="/nuxt.svg" width="460" height="460" class="size-[80vh] absolute -bottom-[25vh] -right-[18vh]" />
 
 <!--
 My name is Benjamin Canac, I'm a software engineer at NuxtLabs since 2020.
