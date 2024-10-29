@@ -1,43 +1,49 @@
 ---
-theme: default
-layout: center
-# some information about your slides (markdown enabled)
+theme: ./theme
+layout: 'center'
 title: The Future of Nuxt UI
 titleTemplate: '%s - Nuxt Nation 2024'
 author: 'Benjamin Canac'
 transition: fade-out
-# enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
 monaco: false
-# take snapshot for each slide in the overview
 overviewSnapshots: true
 fonts:
   sans: 'Public Sans'
+  weights: '300,400,500,600,700,800,900'
 ---
 
 <img src="/nuxt-nation.svg" class="mx-auto text-center" width="600" />
+<p class="text-center text-xl text-white">Nov. 13th 2024</p>
 
-<!-- Hello everyone! It's a pleasure to be part of Nuxt Nation 2024! -->
+<!--
+Hello everyone! It's a pleasure to be part of Nuxt Nation 2024!
+-->
 
 ---
 layout: 'intro'
-class: 'mt-12'
 ---
 
-<img src="https://github.com/benjamincanac.png" rounded-full w-40 mb-6 shadow />
+<img src="https://github.com/benjamincanac.png" width="460" height="460" class="rounded-full size-32 mb-8 ring ring-primary-400" />
 
 # Benjamin Canac
 
-<div class="leading-8 opacity-80">
+<p>
 Working at NuxtLabs. Author of Nuxt UI.
+</p>
+
+<div class="flex flex-col gap-2 mt-8">
+  <div class="flex items-center gap-2">
+    <simple-icons-x class="size-5" />
+    <a href="https://x.com/benjamincanac" target="_blank">x.com/benjamincanac</a>
+  </div>
+  <div class="flex items-center gap-2">
+    <simple-icons-github class="size-5" />
+    <a href="https://github.com/benjamincanac" target="_blank">github.com/benjamincanac</a>
+  </div>
 </div>
 
-<div my-10 flex items-center gap-4>
-  <div simple-icons-github op50 ma text-xl/>
-  <div><a href="https://github.com/benjamincanac" target="_blank">benjamincanac</a></div>
-  <div i-simple-icons-x op50 ma text-xl/>
-  <div><a href="https://x.com/benjamincanac" target="_blank">benjamincanac</a></div>
-</div>
+<img src="/nuxt.svg" width="460" height="460" class="size-[80vh] absolute -bottom-[22vh] -right-[18vh] opacity-75" />
 
 <!--
 My name is Benjamin Canac, I'm a software engineer at NuxtLabs since 2020.
@@ -46,25 +52,18 @@ For the past year, I've been working full-time on Nuxt UI and today I want to ta
 -->
 
 ---
-layout: cover
+layout: 'intro'
 ---
 
-# The Future of Nuxt UI
+# [The Future of]{.font-400} [Nuxt]{.font-800} [UI]{.text-primary-400 .font-800}
 
-<div text-2xl mt--1 op50>How we engineered the best icon solutions for Nuxt</div>
-
-<div abs-br mx-10 my-12 flex="~ col" text-sm text-right>
-  <img src="/nuxt-nation.svg" h-6 alt="Nuxt Nation" />
-  <div text-sm opacity-50>Nov. 12th 2024</div>
-</div>
+<p>How we started from the ground up to build a powerful and intuitive UI library for Nuxt and Vue.</p>
 
 <!--
-For today's topic, I'd like to talk about Nuxt Icon. I'll walk you through various of different solutions on rendering icons on web pages, with their pros and cons. And how we managed to find a balance trade-offs in the Nuxt Icon module and deliver to you.
 -->
 
 ---
-layout: intro
-class: text-center
+layout: 'end'
 ---
 
 # Thank You!

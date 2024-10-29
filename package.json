@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "slidev build",
-    "dev": "slidev --open",
+    "dev": "slidev",
     "export": "slidev export"
   },
   "dependencies": {
@@ -13,5 +13,10 @@
     "@slidev/theme-seriph": "latest",
     "shiki-transformer-color-highlight": "^0.2.0",
     "vue": "^3.5.12"
+  },
+  "devDependencies": {
+    "@iconify-json/heroicons": "^1.2.1",
+    "@iconify-json/logos": "^1.2.3",
+    "@iconify-json/simple-icons": "^1.2.10"
   }
 }
