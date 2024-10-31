@@ -8,22 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@slidev/cli':
-        specifier: ^0.50.0-beta.5
-        version: 0.50.0-beta.5(@babel/parser@7.26.1)(@nuxt/kit@3.13.2(rollup@4.24.2))(@types/markdown-it@14.1.2)(@types/node@18.19.59)(@vue/compiler-sfc@3.5.12)(lightningcss@1.27.0)(postcss@8.4.47)(rollup@4.24.2)
-      '@slidev/theme-default':
-        specifier: latest
-        version: 0.25.0
-      '@slidev/theme-seriph':
-        specifier: latest
-        version: 0.25.0
-      shiki-transformer-color-highlight:
-        specifier: ^0.2.0
-        version: 0.2.0
-      vue:
-        specifier: ^3.5.12
-        version: 3.5.12(typescript@5.6.3)
-    devDependencies:
       '@iconify-json/heroicons':
         specifier: ^1.2.1
         version: 1.2.1
@@ -33,6 +17,18 @@ importers:
       '@iconify-json/simple-icons':
         specifier: ^1.2.10
         version: 1.2.10
+      '@slidev/cli':
+        specifier: ^0.50.0-beta.5
+        version: 0.50.0-beta.5(@babel/parser@7.26.1)(@nuxt/kit@3.13.2(rollup@4.24.2))(@types/markdown-it@14.1.2)(@types/node@18.19.59)(@vue/compiler-sfc@3.5.12)(lightningcss@1.27.0)(postcss@8.4.47)(rollup@4.24.2)
+      '@slidev/theme-default':
+        specifier: latest
+        version: 0.25.0
+      shiki-transformer-color-highlight:
+        specifier: ^0.2.0
+        version: 0.2.0
+      vue:
+        specifier: ^3.5.12
+        version: 3.5.12(typescript@5.6.3)
 
 packages:
 
@@ -728,10 +724,6 @@ packages:
 
   '@slidev/theme-default@0.25.0':
     resolution: {integrity: sha512-iWvthH1Ny+i6gTwRnEeeU+EiqsHC56UdEO45bqLSNmymRAOWkKUJ/M0o7iahLzHSXsiPu71B7C715WxqjXk2hw==}
-    engines: {node: '>=14.0.0', slidev: '>=v0.47.0'}
-
-  '@slidev/theme-seriph@0.25.0':
-    resolution: {integrity: sha512-PnFQbn4I70+/cVie5iAr0Im6sYvnwjkO7Yj5KonTyJZFFJFytckLTrD3ijft/J4cRnz7OmSzTyQKNX1FN/x0YQ==}
     engines: {node: '>=14.0.0', slidev: '>=v0.47.0'}
 
   '@slidev/types@0.47.5':
@@ -3758,12 +3750,6 @@ snapshots:
       roughjs: 4.6.6
 
   '@slidev/theme-default@0.25.0':
-    dependencies:
-      '@slidev/types': 0.47.5
-      codemirror-theme-vars: 0.1.2
-      prism-theme-vars: 0.2.5
-
-  '@slidev/theme-seriph@0.25.0':
     dependencies:
       '@slidev/types': 0.47.5
       codemirror-theme-vars: 0.1.2

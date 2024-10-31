@@ -39,6 +39,13 @@
     @apply border-dashed;
   }
 }
+
+.slidev-layout.center {
+  h1 {
+    @apply text-center font-700;
+  }
+}
+
 /*
 .slidev-layout.cover,
 .slidev-layout.intro,
