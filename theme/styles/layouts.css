@@ -38,6 +38,14 @@
   a, a:hover {
     @apply border-none;
   }
+
+  ul {
+    @apply list-disc;
+  }
+
+  li::marker {
+    @apply text-slate-700 rounded-full;
+  }
 }
 
 .slidev-layout.center {

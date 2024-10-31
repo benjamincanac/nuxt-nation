@@ -95,7 +95,6 @@ class: 'text-center'
   </v-clicks>
 </dl>
 
-
 <!--
 Nuxt UI is UI library that provides fully-styled, accessible and highly customizable Vue components built with Tailwind CSS.
 
@@ -108,7 +107,9 @@ For the past 7 months, we've been working on rebuilding Nuxt UI from scratch and
 
 # What's new in Nuxt UI v3?
 
-<p v-click class="text-center text-xl text-slate-400">Rebuilt from the ground up to create a more powerful and flexible UI development experience.</p>
+<p class="text-center text-xl text-slate-400">Rebuilt from the ground up to create a more powerful and flexible UI development experience.</p>
+
+<v-clicks>
 
 - Tailwind CSS v4
 - Radix Vue / Reka UI
@@ -116,6 +117,8 @@ For the past 7 months, we've been working on rebuilding Nuxt UI from scratch and
 - Vue compatibility
 - Devtools integration
 - TypeScript support
+
+</v-clicks>
 
 <!--
 Let me walk you through the major changes coming in Nuxt UI v3:
@@ -377,10 +380,16 @@ Finally, Nuxt Color Mode enables easy light/dark theme switching. It detects sys
 
 # What about Nuxt UI Pro?
 
+<p>Premium Vue components built on top of Nuxt UI.</p>
+
+<v-clicks>
+
 - Rebuilt from scratch
 - New components
 - Prose with Tailwind CSS
 - Free update
+
+</v-clicks>
 
 ---
 
@@ -419,11 +428,11 @@ class: 'text-center'
 ---
 
 <div class="flex flex-col items-center gap-6">
-  <heroicons-information-circle class="size-10 text-primary-400/80" />
+  <heroicons-information-circle class="size-10 text-primary-400" />
 
-  <h1 class="!m-0">Learn more</h1>
+  <h1 class="!m-0 border-b-2 pb-2 border-primary-400">Learn more</h1>
 
-  <div class="flex items-center gap-6 text-lg">
+  <div class="flex flex-col items-center gap-2 text-lg">
     <a href="https://ui3.nuxt.dev/" target="_blank" class="flex items-center gap-2 hover:text-primary-400 transition-colors">
       <heroicons-link class="size-5" />
       ui3.nuxt.dev
