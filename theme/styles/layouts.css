@@ -35,8 +35,8 @@
     @apply opacity-40;
   }
 
-  a:hover {
-    @apply border-dashed;
+  a, a:hover {
+    @apply border-none;
   }
 }
 
