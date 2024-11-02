@@ -1,5 +1,8 @@
 :root {
   --slidev-theme-primary: #00DC82;
+  --slidev-code-font-size: 14px;
+  --slidev-code-padding: 12px;
+
 }
 
 html.dark {

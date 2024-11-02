@@ -1,6 +1,6 @@
 .slidev-layout {
   h1 {
-    @apply text-white text-5xl tracking-tight font-600;
+    @apply text-white text-5xl tracking-tight font-700;
   }
 
   p {
@@ -43,8 +43,16 @@
     @apply list-disc;
   }
 
-  li::marker {
+  li {
+    @apply my-2 text-lg;
+  }
+
+  ul li::marker {
     @apply text-slate-700 rounded-full;
+  }
+
+  ol li::marker {
+    @apply text-slate-500;
   }
 }
 

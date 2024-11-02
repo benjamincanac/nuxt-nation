@@ -1,11 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="728" height="432" viewBox="0 0 728 432">
-  <!-- Gradient definition -->
   <defs>
     <linearGradient id="greenGradient" x1="0" x2="0" y1="0" y2="1">
       <stop offset="0%" stop-color="#22C55E" stop-opacity="0.3"/>
       <stop offset="100%" stop-color="#22C55E" stop-opacity="0.1"/>
     </linearGradient>
-    <!-- Animation path -->
     <clipPath id="graphClip">
       <rect x="0" y="0" width="0" height="432">
         <animate
@@ -20,32 +18,30 @@
     </clipPath>
   </defs>
 
-  <!-- Animated graph group -->
   <g clip-path="url(#graphClip)">
-    <!-- Filled area under the line -->
+    <!-- Adjusted path coordinates to start and end at edges -->
     <path
-      d="M50,360 C70,360 80,355 90,350
-         L120,340 C150,330 180,300 210,270
-         Q240,240 270,220
-         T330,180
-         Q390,150 450,135
-         C510,120 540,115 570,112
-         Q600,110 630,108
-         L678,50
-         L678,432 L50,432 Z"
+      d="M0,360 C20,360 30,355 40,350
+         L70,340 C100,330 130,300 160,270
+         Q190,240 220,220
+         T280,180
+         Q340,150 400,135
+         C460,120 490,115 520,112
+         Q550,110 580,108
+         L728,50
+         L728,432 L0,432 Z"
       fill="url(#greenGradient)"
     />
 
-    <!-- Line on top -->
     <path
-      d="M50,360 C70,360 80,355 90,350
-         L120,340 C150,330 180,300 210,270
-         Q240,240 270,220
-         T330,180
-         Q390,150 450,135
-         C510,120 540,115 570,112
-         Q600,110 630,108
-         L678,50"
+      d="M0,360 C20,360 30,355 40,350
+         L70,340 C100,330 130,300 160,270
+         Q190,240 220,220
+         T280,180
+         Q340,150 400,135
+         C460,120 490,115 520,112
+         Q550,110 580,108
+         L728,50"
       fill="none"
       stroke="#22C55E"
       stroke-width="2"
