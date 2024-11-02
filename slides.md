@@ -55,6 +55,8 @@ Working at NuxtLabs. Author of Nuxt UI.
 My name is Benjamin, I'm a software engineer at NuxtLabs and the author of Nuxt UI.
 
 Today, I want to talk about the future of Nuxt UI but first, let's talk about what is Nuxt UI.
+
+I'm super excited to share with you today what we've been cooking up for the future of Nuxt UI. But before we dive into the exciting new features, let's quickly get everyone on the same page about what Nuxt UI is.
 -->
 
 ---
@@ -127,7 +129,7 @@ Let me walk you through the major changes coming in Nuxt UI v3:
 
 First, we're upgrading to Tailwind CSS v4 which brings significant performance improvements and new features.
 
-We're also integrating with Radix Vue and Reka UI for enhanced accessibility and more complex components.
+We're now powered by Radix Vue primitives - which means rock-solid accessibility - and Tailwind Variants for that sweet, sweet styling flexibility you all love.
 
 Tailwind Variants will give us more powerful styling capabilities with variant groups and compound variants.
 
@@ -308,6 +310,37 @@ The new theming system in Nuxt UI v3:
 ```
 
 </v-clicks>
+
+---
+
+# Theme → Components <v-click>[→ App Config]</v-click>
+
+```ts
+export default defineAppConfig({
+  ui: {
+    button: {
+      slots: {
+        base: 'font-bold'
+      }
+    }
+  }
+})
+```
+
+---
+
+# Theme → Components → `ui` prop
+
+---
+
+# Theme → Components → `class`
+
+```vue
+<template>
+  <UButton class="font-bold rounded-full">Button</UButton>
+</template>
+```
+
 ---
 
 # Integrations
@@ -412,8 +445,7 @@ Nuxt UI automatically install 3 modules for you:
 <v-clicks>
 
 - Rebuilt from scratch
-- New components
-- Prose with Tailwind CSS
+- Nuxt UI Pro v3 (bumped from v1)
 - Free update
 
 </v-clicks>
@@ -422,34 +454,64 @@ Nuxt UI automatically install 3 modules for you:
 
 # Roadmap
 
-<p>Release timeline for Nuxt UI v3.</p>
+<p class="text-slate-300">Development roadmap for Nuxt UI & Nuxt UI Pro v3.</p>
 
-<div class="relative mt-8">
-  <div class="absolute top-8 left-0 right-0 h-0.5 bg-slate-700" />
+<div class="relative mt-20">
+  <div class="absolute top-1/2 left-0 right-0 h-[2px] -mt-px bg-slate-700 rounded-full" />
 
-  <div class="grid grid-cols-4 gap-8">
-    <div class="relative pt-16">
-      <div class="absolute top-6 w-4 h-4 rounded-full bg-primary-500 border-4 border-slate-900"></div>
-      <h3 class="!text-sm mb-1 font-semibold">Nuxt UI Components</h3>
-      <p class="text-slate-400 !text-sm">Core components rebuilt with new architecture and Radix Vue primitives</p>
+  <div class="grid grid-cols-6 grid-rows-2 mx-2">
+    <div class="relative row-start-1 col-start-1">
+      <div class="absolute -bottom-2 w-4 h-4 rounded-full bg-primary-400 border-4 border-slate-900"></div>
+      <heroicons-cube class="size-4 mb-1" />
+      <h3 class="!text-sm font-semibold">@nuxt/ui</h3>
+      <p class="text-slate-400 !text-xs !mt-1 !mb-0">Rebuild all components from scratch with Radix Vue and Tailwind Variants</p>
     </div>
-    <div class="relative pt-16">
-      <div class="absolute top-6 w-4 h-4 rounded-full bg-primary-500 border-4 border-slate-900"></div>
-      <h3 class="!text-sm mb-1 font-semibold">v3.0.0-alpha</h3>
-      <p class="text-slate-400 !text-sm">First alpha release with core functionality and initial components</p>
-    </div>
-    <div class="relative pt-16">
-      <div class="absolute top-6 w-4 h-4 rounded-full bg-primary-500 border-4 border-slate-900"></div>
+    <div class="pt-7 relative row-start-2 col-start-2">
+      <div class="absolute -top-2 w-4 h-4 rounded-full bg-primary-400 border-4 border-slate-900"></div>
+      <heroicons-book-open class="size-4 mb-1" />
       <h3 class="!text-sm mb-1 font-semibold">Documentation</h3>
-      <p class="text-slate-400 !text-sm">Complete documentation with examples, API reference and guides</p>
+      <p class="text-slate-400 !text-xs !mt-1 !mb-0">Write the documentation for all Nuxt UI components</p>
     </div>
-    <div class="relative pt-16">
-      <div class="absolute top-6 w-4 h-4 rounded-full bg-primary-500 border-4 border-slate-900"></div>
-      <h3 class="!text-sm mb-1 font-semibold">Nuxt UI Pro</h3>
-      <p class="text-slate-400 !text-sm">Premium components and templates built on top of Nuxt UI</p>
+    <div class="relative row-start-1 col-start-3">
+      <div class="absolute -bottom-2 w-4 h-4 rounded-full bg-primary-400 border-4 border-slate-900"></div>
+      <heroicons-tag class="size-4 mb-1" />
+      <h3 class="!text-sm mb-1 font-semibold">v3.0.0-alpha.x</h3>
+      <p class="text-slate-400 !text-xs !mt-1 !mb-0">Released @nuxt/ui & @nuxt/ui-pro alpha packages</p>
+    </div>
+    <div class="pt-7 relative row-start-2 col-start-4">
+      <div class="absolute -top-2 w-4 h-4 bg-slate-900 rounded-full flex items-center justify-center">
+        <div class="rounded-full bg-white animate-pulse size-2"></div>
+      </div>
+      <heroicons-cube class="size-4 mb-1" />
+      <h3 class="!text-sm mb-1 font-semibold">@nuxt/ui-pro</h3>
+      <p class="text-slate-400 !text-xs !mt-1 !mb-0">Finish rebuilding all Nuxt UI Pro components </p>
+    </div>
+    <div class="relative row-start-1 col-start-5">
+      <div class="absolute -bottom-2 w-4 h-4 rounded-full bg-slate-400 border-4 border-slate-900"></div>
+      <heroicons-book-open class="size-4 mb-1" />
+      <h3 class="!text-sm mb-1 font-semibold">Documentation</h3>
+      <p class="text-slate-400 !text-xs !mt-1 !mb-0">Write the documentation for all Nuxt UI Pro components</p>
+    </div>
+    <div class="pt-7 relative row-start-2 col-start-6">
+      <div class="absolute -top-2 w-4 h-4 rounded-full bg-slate-400 border-4 border-slate-900"></div>
+      <heroicons-puzzle-piece class="size-4 mb-1" />
+      <h3 class="!text-sm mb-1 font-semibold">New components</h3>
+      <p class="text-slate-400 !text-xs !mt-1 !mb-0">Create new components like DatePicker, PinInput, etc.</p>
     </div>
   </div>
 </div>
+
+<!--
+Hey everyone! Let me share what we've accomplished over these past 7 months - and trust me, it's been quite a journey!
+
+In the past 7 months, we've completely rebuilt Nuxt UI from the ground up, and I'm really excited about this.
+
+Along the way, we also crafted a streamlined version of Nuxt UI Pro. Why? Well, we needed it to build our docs, but it also gave us a chance to show you what enterprise-grade Nuxt components can look like.
+
+And speaking of docs - we've been pouring our hearts into creating the most comprehensive, developer-friendly documentation possible. Because at the end of the day, great tools deserve great docs, right?
+
+I can't wait for you all to get your hands on this and see what you'll build with it!
+-->
 
 ---
 layout: 'center'
@@ -457,9 +519,9 @@ class: 'text-center'
 ---
 
 <div class="flex flex-col items-center gap-6">
-  <heroicons-information-circle class="size-12 text-primary-400" />
+  <heroicons-heart class="size-12 text-primary-400" />
 
-  <h1 class="">Learn more</h1>
+  <h1 class="">Thank You!</h1>
 
   <div class="flex items-center gap-4 text-lg">
     <a href="https://ui3.nuxt.dev/" target="_blank" class="flex items-center gap-2 hover:text-primary-400 transition-colors">
@@ -473,22 +535,12 @@ class: 'text-center'
   </div>
 </div>
 
-<!--
-You can check the documentation on ui3.nuxt.dev and the source code on the `v3` branch of the `nuxt/ui` repository.
--->
-
----
-layout: 'end'
----
-
-<div class="flex flex-col items-center justify-center gap-4">
-  <h1 class="text-6xl font-800 !text-primary-400 animate-bounce-in animate-delay-100 animate-fade-in">
-    Thank You!
-  </h1>
-</div>
-
 <ParticlesBg class="absolute inset-0 z-[-1]" />
 
 <!--
-Thank you for listening and see you next time!
+Thanks for listening today!
+
+You can find all the code on GitHub, and our docs will help you get started.
+
+Have fun building with Nuxt UI and see you next time!
 -->
