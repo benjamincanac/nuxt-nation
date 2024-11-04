@@ -54,9 +54,7 @@ Working at NuxtLabs. Author of Nuxt UI.
 <!--
 My name is Benjamin, I'm a software engineer at NuxtLabs and the author of Nuxt UI.
 
-Today, I want to talk about the future of Nuxt UI but first, let's talk about what is Nuxt UI.
-
-I'm super excited to share with you today what we've been cooking up for the future of Nuxt UI. But before we dive into the exciting new features, let's quickly get everyone on the same page about what Nuxt UI is.
+I'm excited to share with you today what we've been cooking up for the future of Nuxt UI.
 -->
 
 ---
@@ -65,7 +63,7 @@ class: 'text-center'
 
 <img src="/nuxt-ui.svg" alt="Nuxt UI" width="460" height="460" class="h-16 mx-auto" />
 
-<p class="text-center text-xl text-balance text-slate-400">A Vue component library styled with Tailwind CSS.</p>
+<p class="text-center text-xl text-slate-400">A Vue component library styled with Tailwind CSS.</p>
 
 <img v-click.hide src="/components.png" alt="Components" width="800" class="absolute mt-4 ml-8.5">
 
@@ -98,46 +96,48 @@ class: 'text-center'
 </dl>
 
 <!--
-Nuxt UI is a Vue component library that offers accessible and customizable elements styled with Tailwind CSS.
+Nuxt UI is a Vue UI library that provides accessible and customizable components styled with Tailwind CSS. It gives you everything you need to build modern web applications.
 
-Its goal is to provide everything you need to build beautiful user interfaces.
+[click] Since its launch 18 months ago:
 
-Since its launch 18 months ago, we've reached 4,000+ GitHub stars, over 1.5 million downloads on NPM and we have an incredible community of 150 contributors.
+[click] we've reached over 4,000 GitHub stars
 
-For the past 7 months, we've been working on rebuilding Nuxt UI from scratch and we finally released the first alpha package last month.
+[click] more than 1.5 million NPM downloads
+
+[click] and we've built an amazing community of over 150 contributors
 -->
 
 ---
 
 # What's new in Nuxt UI v3?
 
-<p class="text-xl text-slate-400">Rebuilt from the ground up with a focus on performance, accessibility and DX.</p>
+<p class="text-xl text-slate-400">Rebuilt from the ground up, bringing significant improvements and powerful new features.</p>
 
 <v-clicks>
 
-- Radix Vue
-- Tailwind CSS v4
-- Tailwind Variants
-- Vue compatibility
-- Devtools integration
-- TypeScript support
+- <custom-radix-vue class="size-6" /> Radix Vue
+- <logos-tailwindcss-icon class="size-6" /> Tailwind CSS v4
+- <custom-tailwind-variants class="size-6" /> Tailwind Variants
+- <logos-vue class="size-6" /> Vue compatibility
+- <logos-nuxt-icon class="size-6" /> Nuxt Devtools
+- <logos-typescript-icon class="size-6" /> TypeScript generics
 
 </v-clicks>
 
 <!--
-Let me walk you through the major changes coming in Nuxt UI v3:
+For the past 7 months, we've been working on rebuilding Nuxt UI from the ground up. We now use
 
-First, we're upgrading to Tailwind CSS v4 which brings significant performance improvements and new features.
+[click] Radix Vue as our core component foundation which provides rock-solid primitives to build on, it fixed our Headless UI pain points, and unlocked tons of new features. Radix Vue growing popularity within the Vue community makes it future-proof and a perfect fit for Nuxt UI.
 
-We're now powered by Radix Vue primitives - which means rock-solid accessibility - and Tailwind Variants for that sweet, sweet styling flexibility you all love.
+[click] We've upgraded to Tailwind CSS v4 alpha announced in March 2024 which is way faster and performant and has a new CSS-first configuration approach.
 
-Tailwind Variants will give us more powerful styling capabilities with variant groups and compound variants.
+[click] We've also adopted Tailwind Variants to manage our design system, it makes styling way easier and maintainable.
 
-We've improved Vue compatibility to work seamlessly with both Vue 2 and Vue 3.
+[click] Thanks to Daniel Roe, you can now also use Nuxt UI in any Vue project without Nuxt using a Vite plugin.
 
-The devtools integration will provide better debugging and development experience.
+[click] We've also integrated the Nuxt Devtools to give you a better developer experience.
 
-And finally, we've enhanced TypeScript support for better type safety and developer experience.
+[click] And we took TypeScript to the next level with generics for all components.
 -->
 
 ---
@@ -154,7 +154,7 @@ pnpm add @nuxt/ui@next
 ```
 </v-after>
 
-2. Add the module to `nuxt.config.ts`
+2. Add the `@nuxt/ui` module in your `nuxt.config.ts`
 
 <v-after>
 ```ts
@@ -167,39 +167,32 @@ export default defineNuxtConfig({
 3. Import `tailwindcss` and `@nuxt/ui` in your CSS
 
 <v-after>
-````md magic-move {lines: false}
-```vue
-<style>
+```css
 @import "tailwindcss";
 @import "@nuxt/ui";
-</style>
 ```
+</v-after>
 
+4. Wrap your app with the `<UApp>` component
+
+<v-after>
 ```vue
 <template>
-  <UApp>
-    <NuxtPage />
-  </UApp>
+  <UApp />
 </template>
-
-<style>
-@import "tailwindcss";
-@import "@nuxt/ui";
-</style>
 ```
-````
 </v-after>
 
 </v-clicks>
 
 <!--
-So, how do you try it out?
+Last month, we released the first alpha version of Nuxt UI v3.
 
-[click] First, install the `v3-alpha` package using the NPM `next` tag.
+[click] You can install it using the NPM `next` tag
 
-[click] Then, add the @nuxt/ui module to your `nuxt.config.ts`.
+[click] Then, you register the `@nuxt/ui` module in your `nuxt.config.ts`
 
-[click] Finally, import `tailwindcss` and `@nuxt/ui` in your CSS or in the style block of your `app.vue`.
+[click] And then, you import `tailwindcss` and `@nuxt/ui` in your CSS
 
 [click] You might also want to wrap your app with the `<UApp>` component to provide global configurations.
 
@@ -214,13 +207,15 @@ And that's it! You can now start using all the new components.
 
 <v-clicks>
 
+````md magic-move {lines: false}
+
 ```css
 @import "tailwindcss";
 @import "@nuxt/ui";
 
 @theme {
   --width-8xl: 88rem;
-  --breakpoint-3xl: 1920px;
+
   --font-family-sans: 'Public Sans', sans-serif;
 
   --color-green-50: #EFFDF5;
@@ -237,21 +232,41 @@ And that's it! You can now start using all the new components.
 }
 ```
 
+```css
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@source "../content/**/*.md";
+```
+
+```css
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@plugin "@tailwindcss/typography";
+```
+
+````
+
 </v-clicks>
 
 <!--
 Now, let's talk about the theming system.
 
-[click] Tailwind CSS v4 takes a CSS-first configuration approach, you now customize your theme with CSS variables inside a `@theme` directive.
+[click] Tailwind CSS v4 takes a CSS-first configuration approach,
 
-[click] The `@theme` directive tells Tailwind to make new utilities and variants available based on these variables. It's the equivalent of the `theme.extend` key in Tailwind CSS v3 `tailwind.config.ts` file.
+[click] You now customize your theme with CSS variables inside a theme directive. It's the equivalent of the `theme.extend` key in Tailwind CSS v3. In this example, we're adding a new `8xl` width, we override the default font and override the default `green` color.
+
+[click] You can use the source directive to look for Tailwind classes in files that are not automatically detected. This can be useful when using Nuxt Content for example.
+
+[click] And you can use the plugin directive to import Tailwind CSS plugins.
 -->
 
 ---
 
 # Theme → Design System <v-click>[→ Colors]</v-click>
 
-<p v-after>Define your colors in the `ui.colors` object in `nuxt.config.ts`.</p>
+<p v-after>Color aliases based on Tailwind CSS colors.</p>
 
 <v-clicks>
 
@@ -271,13 +286,35 @@ export default defineAppConfig({
 })
 ```
 
+````md magic-move {lines: false}
+
+```vue
+<template>
+  <UButton color="secondary">Button</UButton>
+</template>
+```
+
+```vue
+<template>
+  <p class="text-[var(--ui-primary)]">This is a primary text</p>
+</template>
+```
+
+````
+
 </v-clicks>
 
 <!--
-The new theming system in Nuxt UI v3:
-1. Uses Tailwind CSS v4's @theme directive for customization
-2. Provides a comprehensive color system with aliases
-3. Includes design tokens for consistent styling across light/dark modes
+Nuxt UI extends Tailwind CSS using a flexible design system.
+
+[click] By default, you have access to 7 color aliases based on Tailwind CSS colors
+
+[click] that you can change at runtime in your `app.config.ts`.
+
+[click] You can use these color aliases in the `color` prop of components
+
+[click] or as CSS variables to style your app.
+
 -->
 
 ---
@@ -288,6 +325,7 @@ The new theming system in Nuxt UI v3:
 
 <v-clicks>
 
+````md magic-move {lines: false}
 ```css
 :root {
   --ui-text-dimmed: var(--ui-color-neutral-400);
@@ -304,16 +342,48 @@ The new theming system in Nuxt UI v3:
   --ui-border: var(--ui-color-neutral-200);
   --ui-border-accented: var(--ui-color-neutral-300);
   --ui-border-inverted: var(--ui-color-neutral-900);
-
-  --ui-radius: var(--radius);
 }
 ```
 
+```css
+.dark {
+  --ui-text-dimmed: var(--ui-color-neutral-500);
+  --ui-text-muted: var(--ui-color-neutral-400);
+  --ui-text-toned: var(--ui-color-neutral-300);
+  --ui-text: var(--ui-color-neutral-200);
+  --ui-text-highlighted: var(--color-white);
+
+  --ui-bg: var(--ui-color-neutral-900);
+  --ui-bg-elevated: var(--ui-color-neutral-800);
+  --ui-bg-accented: var(--ui-color-neutral-700);
+  --ui-bg-inverted: var(--color-white);
+
+  --ui-border: var(--ui-color-neutral-800);
+  --ui-border-accented: var(--ui-color-neutral-700);
+  --ui-border-inverted: var(--color-white);
+}
+```
+````
+
 </v-clicks>
+
+<!--
+TODO
+
+Nuxt UI uses CSS variables as design tokens to ensure consistent and flexible component styling.
+
+[click] These tokens offer fine-grained control over text, background, and border colors.
+
+[click] These tokens form the foundation of the theming system, offering smooth support for both light and dark modes.
+-->
 
 ---
 
-# Theme → Components <v-click>[→ App Config]</v-click>
+# Theme → Components
+
+<p v-after>Customize all components at once or on a per-component basis.</p>
+
+<v-clicks>
 
 ```ts
 export default defineAppConfig({
@@ -327,113 +397,153 @@ export default defineAppConfig({
 })
 ```
 
----
-
-# Theme → Components → `ui` prop
-
----
-
-# Theme → Components → `class`
+```vue
+<UButton :ui="{ base: 'font-bold rounded-full' }">
+  Button
+</UButton>
+```
 
 ```vue
 <template>
-  <UButton class="font-bold rounded-full">Button</UButton>
+  <UButton class="font-bold rounded-full">
+    Button
+  </UButton>
 </template>
 ```
 
----
-
-# Integrations
-
-<p>Fully integrated with the Nuxt ecosystem.</p>
-
-<div class="grid grid-cols-3 gap-6 mt-12">
-<v-clicks>
-  <div class="p-6 rounded-lg bg-slate-800/50 border border-slate-700">
-    <h3 class="text-xl font-semibold text-primary-400 mb-4 flex flex-col items-center gap-3">
-      <carbon-image class="size-8" />
-      Nuxt Icon
-    </h3>
-    <ul class="space-y-3 text-sm text-slate-300">
-      <li class="flex items-start gap-2">
-        <heroicons-check-circle class="size-5 text-primary-400 mt-0.5" />
-        <span>200,000+ Iconify icons</span>
-      </li>
-      <li class="flex items-start gap-2">
-        <heroicons-check-circle class="size-5 text-primary-400 mt-0.5" />
-        <span>Zero-config integration</span>
-      </li>
-      <li class="flex items-start gap-2">
-        <heroicons-check-circle class="size-5 text-primary-400 mt-0.5" />
-        <span><a href="https://icones.js.org" class="text-primary-400 hover:underline">icones.js.org</a> support</span>
-      </li>
-      <li class="flex items-start gap-2">
-        <heroicons-check-circle class="size-5 text-primary-400 mt-0.5" />
-        <span>Local collections</span>
-      </li>
-    </ul>
-  </div>
-
-  <div class="p-6 rounded-lg bg-slate-800/50 border border-slate-700">
-    <h3 class="text-xl font-semibold text-primary-400 mb-4 flex flex-col items-center gap-3">
-      <carbon-text-font class="size-8" />
-      Nuxt Fonts
-    </h3>
-    <ul class="space-y-3 text-sm text-slate-300">
-      <li class="flex items-start gap-2">
-        <heroicons-check-circle class="size-5 text-primary-400 mt-0.5" />
-        <span>Automatic optimization</span>
-      </li>
-      <li class="flex items-start gap-2">
-        <heroicons-check-circle class="size-5 text-primary-400 mt-0.5" />
-        <span>Zero configuration</span>
-      </li>
-      <li class="flex items-start gap-2">
-        <heroicons-check-circle class="size-5 text-primary-400 mt-0.5" />
-        <span>CSS <code class="text-primary-400">@theme</code> support</span>
-      </li>
-      <li class="flex items-start gap-2">
-        <heroicons-check-circle class="size-5 text-primary-400 mt-0.5" />
-        <span>Auto font loading</span>
-      </li>
-    </ul>
-  </div>
-
-  <div class="p-6 rounded-lg bg-slate-800/50 border border-slate-700">
-    <h3 class="text-xl font-semibold text-primary-400 mb-4 flex flex-col items-center gap-3">
-      <carbon-light class="size-8" />
-      Nuxt Color Mode
-    </h3>
-    <ul class="space-y-3 text-sm text-slate-300">
-      <li class="flex items-start gap-2">
-        <heroicons-check-circle class="size-5 text-primary-400 mt-0.5" />
-        <span>Light/dark mode built-in</span>
-      </li>
-      <li class="flex items-start gap-2">
-        <heroicons-check-circle class="size-5 text-primary-400 mt-0.5" />
-        <span>System preference sync</span>
-      </li>
-      <li class="flex items-start gap-2">
-        <heroicons-check-circle class="size-5 text-primary-400 mt-0.5" />
-        <span>Easy configuration</span>
-      </li>
-      <li class="flex items-start gap-2">
-        <heroicons-check-circle class="size-5 text-primary-400 mt-0.5" />
-        <span>UI components ready</span>
-      </li>
-    </ul>
-  </div>
 </v-clicks>
-</div>
 
 <!--
-Nuxt UI automatically install 3 modules for you:
+TODO
+-->
 
-[click] Nuxt Icon gives you access to over 200k icons from Iconify with zero setup. You can use any icon from icones.js.org and even create custom local collections.
+---
 
-[click] Nuxt Fonts provides automatic font optimization. Just declare your fonts in CSS and it handles all the loading and optimization behind the scenes.
+# Integrations <v-click>[→ Nuxt Icon]</v-click>
 
-[click] Nuxt Color Mode enables easy light/dark theme switching. It detects system preferences and integrates seamlessly with all UI components.
+<p v-after>Add 200,000+ ready to use icons to your Nuxt application, based on Iconify.</p>
+
+<v-clicks>
+
+```vue
+<template>
+  <UIcon name="i-heroicons-light-bulb" class="size-5" />
+</template>
+```
+
+```vue
+<template>
+  <UButton icon="i-heroicons-sun">
+    Button
+  </UButton>
+</template>
+```
+
+<a href="https://icones.js.org" target="_blank" class="flex items-center gap-2 mt-4">
+  <custom-icones class="size-5" />
+  icones.js.org
+</a>
+
+</v-clicks>
+
+<!--
+Nuxt UI is fully integrated with the Nuxt ecosystem. It automatically installs:
+
+[click] the Nuxt Icon module for you, which gives access to over 200k icons from Iconify with zero setup.
+
+Anthony made a complete refactor of the module a few months ago to better support server side rendering which you might have seen in his talk yesterday.
+
+This lets you use:
+
+[click] the `<UIcon>` component anywhere in your app
+
+[click] and the `icon` props available on most Nuxt UI components
+
+[click] You can use the icones.js.org app to browse all the icons available
+-->
+
+---
+
+# Integrations → Nuxt Fonts
+
+<p>Plug-and-play web font optimization and configuration.</p>
+
+<v-click>
+
+```css
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+  --font-family-sans: 'Public Sans', sans-serif;
+}
+```
+
+</v-click>
+
+<!--
+Nuxt UI also integrates with Nuxt Fonts, made by Daniel Roe who gave a talk about it yesterday.
+
+This module is automatically installed and configured to work with CSS variables, so you
+
+[click] just have to declare your fonts in your CSS and it handles all the loading and optimization for you.
+-->
+
+---
+
+# Integrations → Nuxt Color Mode
+
+<p>Dark and Light mode with auto detection made easy.</p>
+
+<v-clicks>
+
+```vue
+<script setup lang="ts">
+defineOptions({ inheritAttrs: false })
+
+const colorMode = useColorMode()
+const appConfig = useAppConfig()
+
+const isDark = computed({
+  get() {
+    return colorMode.value === 'dark'
+  },
+  set() {
+    colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
+  }
+})
+</script>
+
+<template>
+  <ClientOnly v-if="!colorMode?.forced">
+    <UButton
+      :icon="isDark ? appConfig.ui.icons.dark : appConfig.ui.icons.light"
+      color="neutral"
+      variant="ghost"
+      v-bind="{
+        ...$attrs
+      }"
+      :aria-label="`Switch to ${isDark ? 'light' : 'dark'} mode`"
+      @click="isDark = !isDark"
+    />
+
+    <template #fallback>
+      <div class="w-8 h-8" />
+    </template>
+  </ClientOnly>
+</template>
+```
+
+</v-clicks>
+
+<!--
+Nuxt UI components are styled with dark mode in mind,
+
+
+Nuxt UI integrates with Nuxt Color Mode.
+Nuxt Color Mode enables easy light/dark theme switching. It detects system preferences and integrates seamlessly with all UI components.
+
+[click] All you have to do is make a color mode switcher to let your users switch between light and dark mode.
 -->
 
 ---
@@ -442,13 +552,42 @@ Nuxt UI automatically install 3 modules for you:
 
 <p>Premium Vue components built on top of Nuxt UI.</p>
 
-<v-clicks>
+<v-click>
 
-- Rebuilt from scratch
-- Nuxt UI Pro v3 (bumped from v1)
-- Free update
+1. Install the `v3.0.0-alpha` package
 
-</v-clicks>
+```bash
+pnpm add @nuxt/ui-pro@next
+```
+
+2. Add the `@nuxt/ui-pro` module in your `nuxt.config.ts`
+
+```ts
+export default defineNuxtConfig({
+  modules: ['@nuxt/ui-pro']
+})
+```
+
+3. Import `tailwindcss` and `@nuxt/ui-pro` in your CSS
+
+```css
+@import "tailwindcss";
+@import "@nuxt/ui-pro";
+```
+
+</v-click>
+
+<!--
+Nuxt UI Pro is a collection of premium Vue components built on top of Nuxt UI.
+
+We've also rebuilt it from the ground up to be fully compatible with Nuxt UI v3. This is why its major version has been increased from v1 to v3 to reflect that.
+
+I'm happy to share that this will be a free update, the license you bought or will buy is compatible for both versions.
+
+[click] Nuxt UI Pro v3 only contains the components to build the Nuxt UI documentation at the moment.
+
+But, you can try it out now by replacing all `@nuxt/ui` occurrences by `@nuxt/ui-pro`.
+-->
 
 ---
 
@@ -456,61 +595,81 @@ Nuxt UI automatically install 3 modules for you:
 
 <p class="text-slate-300">Development roadmap for Nuxt UI & Nuxt UI Pro v3.</p>
 
-<div class="relative mt-20">
+<div class="relative mt-12">
   <div class="absolute top-1/2 left-0 right-0 h-[2px] -mt-px bg-slate-700 rounded-full" />
 
-  <div class="grid grid-cols-6 grid-rows-2 mx-2">
+  <div class="grid grid-cols-7 grid-rows-2 mx-2">
+  <v-clicks>
     <div class="relative row-start-1 col-start-1">
       <div class="absolute -bottom-2 w-4 h-4 rounded-full bg-primary-400 border-4 border-slate-900"></div>
       <heroicons-cube class="size-4 mb-1" />
-      <h3 class="!text-sm font-semibold">@nuxt/ui</h3>
-      <p class="text-slate-400 !text-xs !mt-1 !mb-0">Rebuild all components from scratch with Radix Vue and Tailwind Variants</p>
+      <h3 class="!text-xs font-semibold">@nuxt/ui</h3>
+      <p class="text-slate-400 !text-[10px]/4 !mt-1 !mb-0">Rebuild all components from scratch with Radix Vue and Tailwind Variants</p>
     </div>
     <div class="pt-7 relative row-start-2 col-start-2">
       <div class="absolute -top-2 w-4 h-4 rounded-full bg-primary-400 border-4 border-slate-900"></div>
       <heroicons-book-open class="size-4 mb-1" />
-      <h3 class="!text-sm mb-1 font-semibold">Documentation</h3>
-      <p class="text-slate-400 !text-xs !mt-1 !mb-0">Write the documentation for all Nuxt UI components</p>
+      <h3 class="!text-xs mb-1 font-semibold">Documentation</h3>
+      <p class="text-slate-400 !text-[10px]/4 !mt-1 !mb-0">Write documentation for Nuxt UI</p>
     </div>
     <div class="relative row-start-1 col-start-3">
       <div class="absolute -bottom-2 w-4 h-4 rounded-full bg-primary-400 border-4 border-slate-900"></div>
       <heroicons-tag class="size-4 mb-1" />
-      <h3 class="!text-sm mb-1 font-semibold">v3.0.0-alpha.x</h3>
-      <p class="text-slate-400 !text-xs !mt-1 !mb-0">Released @nuxt/ui & @nuxt/ui-pro alpha packages</p>
+      <h3 class="!text-xs mb-1 font-semibold">v3.0.0-alpha.x</h3>
+      <p class="text-slate-400 !text-[10px]/4 !mt-1 !mb-0">Released @nuxt/ui & @nuxt/ui-pro alpha packages</p>
     </div>
     <div class="pt-7 relative row-start-2 col-start-4">
       <div class="absolute -top-2 w-4 h-4 bg-slate-900 rounded-full flex items-center justify-center">
         <div class="rounded-full bg-white animate-pulse size-2"></div>
       </div>
       <heroicons-cube class="size-4 mb-1" />
-      <h3 class="!text-sm mb-1 font-semibold">@nuxt/ui-pro</h3>
-      <p class="text-slate-400 !text-xs !mt-1 !mb-0">Finish rebuilding all Nuxt UI Pro components </p>
+      <h3 class="!text-xs mb-1 font-semibold">@nuxt/ui-pro</h3>
+      <p class="text-slate-400 !text-[10px]/4 !mt-1 !mb-0">Finish rebuilding Nuxt UI Pro components</p>
     </div>
     <div class="relative row-start-1 col-start-5">
       <div class="absolute -bottom-2 w-4 h-4 rounded-full bg-slate-400 border-4 border-slate-900"></div>
       <heroicons-book-open class="size-4 mb-1" />
-      <h3 class="!text-sm mb-1 font-semibold">Documentation</h3>
-      <p class="text-slate-400 !text-xs !mt-1 !mb-0">Write the documentation for all Nuxt UI Pro components</p>
+      <h3 class="!text-xs mb-1 font-semibold">Documentation</h3>
+      <p class="text-slate-400 !text-[10px]/4 !mt-1 !mb-0">Write documentation for Nuxt UI Pro</p>
     </div>
     <div class="pt-7 relative row-start-2 col-start-6">
       <div class="absolute -top-2 w-4 h-4 rounded-full bg-slate-400 border-4 border-slate-900"></div>
-      <heroicons-puzzle-piece class="size-4 mb-1" />
-      <h3 class="!text-sm mb-1 font-semibold">New components</h3>
-      <p class="text-slate-400 !text-xs !mt-1 !mb-0">Create new components like DatePicker, PinInput, etc.</p>
+      <heroicons-computer-desktop class="size-4 mb-1" />
+      <h3 class="!text-xs mb-1 font-semibold">Migrate everything</h3>
+      <ul class="text-slate-400 !mt-1 -mb-9">
+        <li class="!text-[10px]/2">Templates</li>
+        <li class="!text-[10px]/2">nuxt.com</li>
+        <li class="!text-[10px]/2">Modules</li>
+        <li class="!text-[10px]/2">Nuxt Hub</li>
+        <li class="!text-[10px]/2">Nuxt Studio</li>
+      </ul>
     </div>
+    <div class="relative row-start-1 col-start-7">
+      <div class="absolute -bottom-2 w-4 h-4 rounded-full bg-slate-400 border-4 border-slate-900"></div>
+      <heroicons-tag class="size-4 mb-1" />
+      <h3 class="!text-xs mb-1 font-semibold">v3.0.0</h3>
+      <p class="text-slate-400 !text-[10px]/4 !mt-1 !mb-0">Official release of Nuxt UI & Nuxt UI Pro v3</p>
+    </div>
+  </v-clicks>
   </div>
 </div>
 
 <!--
-Hey everyone! Let me share what we've accomplished over these past 7 months - and trust me, it's been quite a journey!
+[click] In the past 7 months, we've completely rebuilt Nuxt UI from the ground up.
 
-In the past 7 months, we've completely rebuilt Nuxt UI from the ground up, and I'm really excited about this.
+In parallel, we worked on Nuxt UI Pro v3 as we needed it to actually build the Nuxt UI docs. It took a long time especially because we made the typography by hand. We're no longer using the `@tailwindcss/typography` plugin and this lets users customize the typography like any other component with the App Config.
 
-Along the way, we also crafted a streamlined version of Nuxt UI Pro. Why? Well, we needed it to build our docs, but it also gave us a chance to show you what enterprise-grade Nuxt components can look like.
+[click] It took a lot of time to write the docs for every component from scratch but it feels way better than before with way more examples.
 
-And speaking of docs - we've been pouring our hearts into creating the most comprehensive, developer-friendly documentation possible. Because at the end of the day, great tools deserve great docs, right?
+[click] But last month, we finally released the first alpha version of Nuxt UI v3. We're already at the alpha.8 version with lots of improvements and we'll continue shipping.
 
-I can't wait for you all to get your hands on this and see what you'll build with it!
+[click] We're now focused on finishing the Nuxt UI Pro components so you can start migrating your projects.
+
+[click] We also have to write the docs for Nuxt UI Pro v3.
+
+[click] We'll also publish a complete migration guide for both Nuxt UI and Nuxt UI Pro and start migrating all our apps. This might take a while because we have a lot, like all the Nuxt UI Pro templates, nuxt.com, all the Nuxt Modules docs, Nuxt Hub, Nuxt Studio and so on.
+
+[click] Unfortunately, I don't have a release date for Nuxt UI v3 because we depend on Tailwind CSS v4-alpha, on Reka UI which is the next major of Radix Vue and is still in alpha. We'll only be able to make an official release once these dependencies are also official.
 -->
 
 ---
@@ -521,7 +680,7 @@ class: 'text-center'
 <div class="flex flex-col items-center gap-6">
   <heroicons-heart class="size-12 text-primary-400" />
 
-  <h1 class="">Thank You!</h1>
+  <h1>Thank You!</h1>
 
   <div class="flex items-center gap-4 text-lg">
     <a href="https://ui3.nuxt.dev/" target="_blank" class="flex items-center gap-2 hover:text-primary-400 transition-colors">
@@ -538,9 +697,9 @@ class: 'text-center'
 <ParticlesBg class="absolute inset-0 z-[-1]" />
 
 <!--
-Thanks for listening today!
+I hope this gave you a good overview of Nuxt UI v3.
 
-You can find all the code on GitHub, and our docs will help you get started.
+You can check the documentation on ui3.nuxt.dev, and the source code on the `v3` branch of the nuxt/ui GitHub repository.
 
-Have fun building with Nuxt UI and see you next time!
+Thanks you!
 -->
