@@ -313,7 +313,7 @@ Nuxt UI extends Tailwind CSS using a flexible design system.
 
 [click] You can use these color aliases in the `color` prop of components
 
-[click] or as CSS variables to style your app.
+[click] or as CSS variables to style your app in light and dark mode automatically.
 
 -->
 
@@ -321,7 +321,7 @@ Nuxt UI extends Tailwind CSS using a flexible design system.
 
 # Theme → Design System → Tokens
 
-<p>Design tokens are CSS variables that can be used to style your components globally.</p>
+<p>CSS variables to style your components globally.</p>
 
 <v-clicks>
 
@@ -342,6 +342,8 @@ Nuxt UI extends Tailwind CSS using a flexible design system.
   --ui-border: var(--ui-color-neutral-200);
   --ui-border-accented: var(--ui-color-neutral-300);
   --ui-border-inverted: var(--ui-color-neutral-900);
+
+  --ui-radius: var(--radius);
 }
 ```
 
@@ -361,6 +363,8 @@ Nuxt UI extends Tailwind CSS using a flexible design system.
   --ui-border: var(--ui-color-neutral-800);
   --ui-border-accented: var(--ui-color-neutral-700);
   --ui-border-inverted: var(--color-white);
+
+  --ui-radius: var(--radius);
 }
 ```
 ````
@@ -368,13 +372,106 @@ Nuxt UI extends Tailwind CSS using a flexible design system.
 </v-clicks>
 
 <!--
-TODO
+Nuxt UI provides a set of design tokens to style your components globally.
 
-Nuxt UI uses CSS variables as design tokens to ensure consistent and flexible component styling.
+[click] These tokens offer control over text, background, borders and radius.
 
-[click] These tokens offer fine-grained control over text, background, and border colors.
+[click] You can override these tokens in your CSS for light and dark mode.
+-->
 
-[click] These tokens form the foundation of the theming system, offering smooth support for both light and dark modes.
+---
+
+# Theme → Components <v-click>[→ Slots]</v-click>
+
+<p v-after>Slots represent distinct HTML elements or sections.</p>
+
+<v-clicks>
+
+````md magic-move {lines: false}
+
+```vue
+<template>
+  <div :class="ui.root({ class: [props.class, props.ui?.root] })">
+    <div :class="ui.header({ class: props.ui?.header })">
+      <slot name="header" />
+    </div>
+
+    <div :class="ui.body({ class: props.ui?.body })">
+      <slot />
+    </div>
+
+    <div :class="ui.footer({ class: props.ui?.footer })">
+      <slot name="footer" />
+    </div>
+  </div>
+</template>
+```
+
+```ts
+export default {
+  slots: {
+    root: 'bg-[var(--ui-bg)] ring ring-[var(--ui-border)] rounded-[calc(var(--ui-radius)*2)]',
+    header: 'p-4 sm:px-6',
+    body: 'p-4 sm:p-6',
+    footer: 'p-4 sm:px-6'
+  }
+}
+```
+
+````
+
+</v-clicks>
+
+<!--
+Nuxt UI components are styled using the Tailwind Variants API.
+
+[click] They have slots which represents distinct HTML element or section within the component.
+
+[click] Let's take the Card component as an example which has a root div and 3 children slots.
+
+[click] Its theme is defined by the `slots` property in the component theme like this.
+-->
+
+---
+
+# Theme → Components → Variants
+
+<p>Variants change the style of slots based on props.</p>
+
+<v-clicks>
+
+```ts
+export default {
+  slots: {
+    root: 'inline-flex items-center justify-center rounded-full bg-[var(--ui-bg-elevated)]'
+  },
+  variants: {
+    size: {
+      sm: {
+        root: 'size-7 text-sm'
+      },
+      md: {
+        root: 'size-8 text-base'
+      },
+      lg: {
+        root: 'size-9 text-lg'
+      }
+    }
+  },
+  defaultVariants: {
+    size: 'md'
+  }
+}
+```
+
+</v-clicks>
+
+<!--
+Components can also have variants which change the style of slots based on props.
+
+[click] Let's take the Avatar component as an example that has a `size` prop.
+
+The size of the `root` slot will be changed based on the `size` prop value.
 -->
 
 ---
@@ -414,7 +511,15 @@ export default defineAppConfig({
 </v-clicks>
 
 <!--
-TODO
+You have 3 ways to customize the components theme.
+
+[click] You can override them globally in your `app.config.ts`, where you define the `slots` and `variants`.
+
+[click] You can override a component's slots using the `ui` prop.
+
+[click] And finally, you can use the `class` prop to override the root slot of the component.
+
+Do note that Tailwind Variants uses the `tailwind-merge` library under the hood, so the classes you provide will be smartly merged.
 -->
 
 ---
@@ -499,10 +604,7 @@ This module is automatically installed and configured to work with CSS variables
 
 ```vue
 <script setup lang="ts">
-defineOptions({ inheritAttrs: false })
-
 const colorMode = useColorMode()
-const appConfig = useAppConfig()
 
 const isDark = computed({
   get() {
@@ -515,35 +617,23 @@ const isDark = computed({
 </script>
 
 <template>
-  <ClientOnly v-if="!colorMode?.forced">
-    <UButton
-      :icon="isDark ? appConfig.ui.icons.dark : appConfig.ui.icons.light"
-      color="neutral"
-      variant="ghost"
-      v-bind="{
-        ...$attrs
-      }"
-      :aria-label="`Switch to ${isDark ? 'light' : 'dark'} mode`"
-      @click="isDark = !isDark"
-    />
-
-    <template #fallback>
-      <div class="w-8 h-8" />
-    </template>
-  </ClientOnly>
+  <UButton
+    :icon="isDark ? 'i-heroicons-moon' : 'i-heroicons-sun'"
+    color="neutral"
+    variant="ghost"
+    @click="isDark = !isDark"
+  />
 </template>
 ```
 
 </v-clicks>
 
 <!--
-Nuxt UI components are styled with dark mode in mind,
+Nuxt UI automatically installs the Nuxt Color Mode module and configure Tailwind CSS to make the dark variant work.
 
+Since our components are styled with design tokens that work for light and dark mode, you have nothing to do to support dark mode in your application.
 
-Nuxt UI integrates with Nuxt Color Mode.
-Nuxt Color Mode enables easy light/dark theme switching. It detects system preferences and integrates seamlessly with all UI components.
-
-[click] All you have to do is make a color mode switcher to let your users switch between light and dark mode.
+[click] You can easily create a color mode button to let your users switch between light and dark mode.
 -->
 
 ---
@@ -580,7 +670,9 @@ export default defineNuxtConfig({
 <!--
 Nuxt UI Pro is a collection of premium Vue components built on top of Nuxt UI.
 
-We've also rebuilt it from the ground up to be fully compatible with Nuxt UI v3. This is why its major version has been increased from v1 to v3 to reflect that.
+We've also rebuilt it from the ground up to take advantage of Nuxt UI new features.
+
+The major version has been increased from v1 to v3 to make it clear that Nuxt UI Pro v3 is meant to be used with Nuxt UI v3.
 
 I'm happy to share that this will be a free update, the license you bought or will buy is compatible for both versions.
 
@@ -657,7 +749,7 @@ But, you can try it out now by replacing all `@nuxt/ui` occurrences by `@nuxt/ui
 <!--
 [click] In the past 7 months, we've completely rebuilt Nuxt UI from the ground up.
 
-In parallel, we worked on Nuxt UI Pro v3 as we needed it to actually build the Nuxt UI docs. It took a long time especially because we made the typography by hand. We're no longer using the `@tailwindcss/typography` plugin and this lets users customize the typography like any other component with the App Config.
+In parallel, we worked on Nuxt UI Pro v3 as we needed it to actually build the Nuxt UI docs. It took a long time especially because we made the typography by hand. We're no longer using the `@tailwindcss/typography` plugin and this lets users customize the typography like any other component in the App Config.
 
 [click] It took a lot of time to write the docs for every component from scratch but it feels way better than before with way more examples.
 
@@ -697,9 +789,9 @@ class: 'text-center'
 <ParticlesBg class="absolute inset-0 z-[-1]" />
 
 <!--
-I hope this gave you a good overview of Nuxt UI v3.
+I hope this gave you a clear understanding of Nuxt UI v3.
 
 You can check the documentation on ui3.nuxt.dev, and the source code on the `v3` branch of the nuxt/ui GitHub repository.
 
-Thanks you!
+Thank you!
 -->
