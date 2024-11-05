@@ -96,7 +96,7 @@ class: 'text-center'
 </dl>
 
 <!--
-Nuxt UI is a Vue UI library that provides accessible and customizable components styled with Tailwind CSS. It gives you everything you need to build modern web applications.
+Nuxt UI is a Vue component library, it comes with over 50 accessible and customizable components styled with Tailwind CSS. It provides everything you need to build modern web apps.
 
 [click] Since its launch 18 months ago:
 
@@ -116,33 +116,39 @@ Nuxt UI is a Vue UI library that provides accessible and customizable components
 <v-clicks>
 
 - <custom-radix-vue class="size-6" /> Radix Vue
+- <img src="/tanstack.png" alt="TanStack Table" class="size-6 inline rounded-full" /> TanStack Table
+- <custom-embla-carousel class="size-6" /> Embla Carousel
 - <logos-tailwindcss-icon class="size-6" /> Tailwind CSS v4
 - <custom-tailwind-variants class="size-6" /> Tailwind Variants
 - <logos-vue class="size-6" /> Vue compatibility
 - <logos-nuxt-icon class="size-6" /> Nuxt Devtools
-- <logos-typescript-icon class="size-6" /> TypeScript generics
+- <logos-typescript-icon class="size-6" /> TypeScript integration
 
 </v-clicks>
 
 <!--
 For the past 7 months, we've been working on rebuilding Nuxt UI from the ground up. We now use
 
-[click] Radix Vue as our core component foundation which provides rock-solid primitives to build on, it fixed our Headless UI pain points, and unlocked tons of new features. Radix Vue growing popularity within the Vue community makes it future-proof and a perfect fit for Nuxt UI.
+[click] Radix Vue as our core component foundation. This gives us access to rock-solid primitives to build on, it fixed our Headless UI pain points and unlocked tons of new features. Radix Vue growing popularity within the Vue community makes it future-proof and a perfect fit for Nuxt UI.
 
-[click] We've upgraded to Tailwind CSS v4 alpha announced in March 2024 which is way faster and performant and has a new CSS-first configuration approach.
+[click] We now also use TanStack Table for our table component. It's a powerful table library with pagination, sorting, filtering, and more.
 
-[click] We've also adopted Tailwind Variants to manage our design system, it makes styling way easier and maintainable.
+[click] We use Embla Carousel for our new carousel component. It's a flexible, powerful, and fast carousel library with native lazy-loading, parallax, and infinite scrolling.
 
-[click] Thanks to Daniel Roe, you can now also use Nuxt UI in any Vue project without Nuxt using a Vite plugin.
+[click] We've upgraded to Tailwind CSS v4 alpha which was announced in March 2024. It's up to 10x faster with a new Rust-powered engine, has a unified CSS toolchain with Lightning CSS built-in, and introduces a CSS-first configuration approach using native CSS features.
 
-[click] We've also integrated the Nuxt Devtools to give you a better developer experience.
+[click] We've adopted Tailwind Variants, a powerful variant API library for TailwindCSS, to manage our design system. It provides first-class variants support, responsive variants, slots for component composition, and automatic class conflict resolution - making styling way easier and more maintainable.
 
-[click] And we took TypeScript to the next level with generics for all components.
+[click] Thanks to Daniel Roe, you can now use Nuxt UI in any Vue project without Nuxt by adding the Vite plugin and Vue plugin in your configuration. This includes auto-imports, components registration, and full theming support.
+
+[click] We've also integrated the Nuxt Devtools to give you a better developer experience. You can now preview and edit the Nuxt UI components props in the devtools and copy the generated code in your app once you're done.
+
+[click] And we took TypeScript to the next level with full auto-completion for component props based on your theme, intelligent suggestions for your app.config.ts theme configuration and improved type inference for slots and events with generic based components.
 -->
 
 ---
 
-# Installation
+# Installation -> Nuxt
 
 <v-clicks>
 
@@ -178,7 +184,7 @@ export default defineNuxtConfig({
 <v-after>
 ```vue
 <template>
-  <UApp />
+  <UApp><NuxtPage /></UApp>
 </template>
 ```
 </v-after>
@@ -198,6 +204,10 @@ Last month, we released the first alpha version of Nuxt UI v3.
 
 And that's it! You can now start using all the new components.
 -->
+
+---
+
+# Installation -> Vue
 
 ---
 
@@ -253,7 +263,7 @@ And that's it! You can now start using all the new components.
 <!--
 Now, let's talk about the theming system.
 
-[click] Tailwind CSS v4 takes a CSS-first configuration approach,
+[click] Tailwind CSS v4 takes a CSS-first configuration approach, you can do everything in your CSS without the need of a tailwind.config file.
 
 [click] You now customize your theme with CSS variables inside a theme directive. It's the equivalent of the `theme.extend` key in Tailwind CSS v3. In this example, we're adding a new `8xl` width, we override the default font and override the default `green` color.
 
@@ -268,9 +278,12 @@ Now, let's talk about the theming system.
 
 <p v-after>Color aliases based on Tailwind CSS colors.</p>
 
-<v-clicks>
+<div class="grid grid-cols-2 gap-4">
 
-```ts
+<v-after>
+
+````md magic-move {lines: false}
+```ts {all|4|9|10|all}
 export default defineAppConfig({
   ui: {
     colors: {
@@ -285,36 +298,141 @@ export default defineAppConfig({
   }
 })
 ```
+````
+
+</v-after>
+
+<v-clicks>
+
+```vue
+<template>
+  <UButton color="neutral">Button</UButton>
+
+  <UBadge color="primary" variant="subtle">
+    Badge
+  </UBadge>
+
+  <USwitch color="error" />
+
+  <UCheckbox color="warning" />
+
+  <USlider color="secondary" />
+</template>
+
+
+```
+
+</v-clicks>
+
+<div class="col-span-2 mt-4">
+<img src="/colors.png" v-after />
+</div>
+
+</div>
+
+<!--
+Nuxt UI provides a flexible design system through CSS variables.
+
+[click] By default, you have access to 7 color aliases based on your Tailwind CSS colors. You can change them at runtime in your `app.config.ts`.
+
+[click] The `primary` color is used as the default color for all components.
+
+[click] The `error` color is used automatically in form components when a validation error occurs.
+
+[click] The `neutral` color is used for backgrounds, texts, borders, rings, and so on.
+
+[click] The other ones are not directly used in the theme but you can use them as you want.
+
+[click] These aliases are used to generate the theme of components and will be available through the `color` props.
+-->
+
+---
+
+# Theme → Design System → Colors
+
+<p>Color aliases are not Tailwind CSS colors.</p>
+
+<v-clicks>
 
 ````md magic-move {lines: false}
 
 ```vue
 <template>
-  <UButton color="secondary">Button</UButton>
+  <p class="text-primary-500 dark:text-primary-400">
+    This is a primary text
+  </p>
 </template>
 ```
 
 ```vue
 <template>
-  <p class="text-[var(--ui-primary)]">This is a primary text</p>
+  <p class="text-[var(--ui-color-primary-500)] dark:text-[var(--ui-color-primary-400)]">
+    This is a primary text
+  </p>
 </template>
 ```
 
 ````
 
+```vue
+<template>
+  <p class="text-[var(--ui-primary)]">
+    This is a primary text
+  </p>
+</template>
+```
+
 </v-clicks>
 
 <!--
-Nuxt UI extends Tailwind CSS using a flexible design system.
+Unlike Nuxt UI v2, these color aliases are not automatically defined as Tailwind CSS colors to avoid conflicts.
 
-[click] By default, you have access to 7 color aliases based on Tailwind CSS colors
+[click] This means you won't be able to write `text-primary-500 dark:text-primary-400` in your CSS as before.
 
-[click] that you can change at runtime in your `app.config.ts`.
+[click] Instead, you can use the `--ui-color-primary` CSS variables
 
-[click] You can use these color aliases in the `color` prop of components
+[click] or the the `--ui-primary` design token that allows you to configure which shade to use in light and dark mode.
+-->
 
-[click] or as CSS variables to style your app in light and dark mode automatically.
+---
 
+# Theme → Design System → Colors
+
+<p>CSS variables to style your components globally.</p>
+
+```css
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+  --color-primary-50: var(--ui-color-primary-50);
+  --color-primary-100: var(--ui-color-primary-100);
+  --color-primary-200: var(--ui-color-primary-200);
+  --color-primary-300: var(--ui-color-primary-300);
+  --color-primary-400: var(--ui-color-primary-400);
+  --color-primary-500: var(--ui-color-primary-500);
+  --color-primary-600: var(--ui-color-primary-600);
+  --color-primary-700: var(--ui-color-primary-700);
+  --color-primary-800: var(--ui-color-primary-800);
+  --color-primary-900: var(--ui-color-primary-900);
+  --color-primary-950: var(--ui-color-primary-950);
+}
+```
+
+<v-clicks>
+
+```vue
+<template>
+  <p class="text-primary-500 dark:text-primary-400">This is a primary text</p>
+</template>
+```
+
+</v-clicks>
+
+<!--
+However, to do like in Nuxt UI v2, you can use define the color aliases as Tailwind CSS colors.
+
+[click] This will allow you to write `text-primary-500 dark:text-primary-400` in your CSS.
 -->
 
 ---
@@ -385,11 +503,12 @@ Nuxt UI provides a set of design tokens to style your components globally.
 
 <p v-after>Slots represent distinct HTML elements or sections.</p>
 
-<v-clicks>
+<v-after>
 
 ````md magic-move {lines: false}
 
 ```vue
+<!-- UCard.vue -->
 <template>
   <div :class="ui.root({ class: [props.class, props.ui?.root] })">
     <div :class="ui.header({ class: props.ui?.header })">
@@ -408,6 +527,7 @@ Nuxt UI provides a set of design tokens to style your components globally.
 ```
 
 ```ts
+// UCard theme
 export default {
   slots: {
     root: 'bg-[var(--ui-bg)] ring ring-[var(--ui-border)] rounded-[calc(var(--ui-radius)*2)]',
@@ -420,16 +540,16 @@ export default {
 
 ````
 
-</v-clicks>
+</v-after>
 
 <!--
 Nuxt UI components are styled using the Tailwind Variants API.
 
 [click] They have slots which represents distinct HTML element or section within the component.
 
-[click] Let's take the Card component as an example which has a root div and 3 children slots.
+Let's take the Card component as an example which has a root div and 3 children slots.
 
-[click] Its theme is defined by the `slots` property in the component theme like this.
+[click] Its theme is defined by the `root`, `header`, `body` and `footer` slots.
 -->
 
 ---
@@ -438,9 +558,10 @@ Nuxt UI components are styled using the Tailwind Variants API.
 
 <p>Variants change the style of slots based on props.</p>
 
-<v-clicks>
+<v-after>
 
 ```ts
+// UAvatar theme
 export default {
   slots: {
     root: 'inline-flex items-center justify-center rounded-full bg-[var(--ui-bg-elevated)]'
@@ -464,12 +585,12 @@ export default {
 }
 ```
 
-</v-clicks>
+</v-after>
 
 <!--
 Components can also have variants which change the style of slots based on props.
 
-[click] Let's take the Avatar component as an example that has a `size` prop.
+Let's take the Avatar component as an example that has a `size` prop.
 
 The size of the `root` slot will be changed based on the `size` prop value.
 -->
@@ -511,7 +632,7 @@ export default defineAppConfig({
 </v-clicks>
 
 <!--
-You have 3 ways to customize the components theme.
+Now that you know how the components theme is defined, you have 3 ways to customize it.
 
 [click] You can override them globally in your `app.config.ts`, where you define the `slots` and `variants`.
 
@@ -592,6 +713,8 @@ Nuxt UI also integrates with Nuxt Fonts, made by Daniel Roe who gave a talk abou
 This module is automatically installed and configured to work with CSS variables, so you
 
 [click] just have to declare your fonts in your CSS and it handles all the loading and optimization for you.
+
+Here we use the `Public Sans` font from Google Fonts.
 -->
 
 ---
@@ -644,6 +767,16 @@ Since our components are styled with design tokens that work for light and dark 
 
 <v-click>
 
+<div class="abs-tr top-12 right-14">
+  <span class="inline-flex items-center rounded-full bg-primary-500/10 px-3 py-2 text-base font-medium text-primary-500 ring-1 ring-inset ring-primary-500/20">
+    Free Update
+  </span>
+</div>
+
+</v-click>
+
+<v-click>
+
 1. Install the `v3.0.0-alpha` package
 
 ```bash
@@ -674,7 +807,7 @@ We've also rebuilt it from the ground up to take advantage of Nuxt UI new featur
 
 The major version has been increased from v1 to v3 to make it clear that Nuxt UI Pro v3 is meant to be used with Nuxt UI v3.
 
-I'm happy to share that this will be a free update, the license you bought or will buy is compatible for both versions.
+[click] I'm happy to share that this will be a free update, the license you bought or will buy is compatible for both versions.
 
 [click] Nuxt UI Pro v3 only contains the components to build the Nuxt UI documentation at the moment.
 
@@ -702,7 +835,7 @@ But, you can try it out now by replacing all `@nuxt/ui` occurrences by `@nuxt/ui
       <div class="absolute -top-2 w-4 h-4 rounded-full bg-primary-400 border-4 border-slate-900"></div>
       <heroicons-book-open class="size-4 mb-1" />
       <h3 class="!text-xs mb-1 font-semibold">Documentation</h3>
-      <p class="text-slate-400 !text-[10px]/4 !mt-1 !mb-0">Write documentation for Nuxt UI</p>
+      <p class="text-slate-400 !text-[10px]/4 !mt-1 !mb-0">Write documentation for Nuxt UI v3</p>
     </div>
     <div class="relative row-start-1 col-start-3">
       <div class="absolute -bottom-2 w-4 h-4 rounded-full bg-primary-400 border-4 border-slate-900"></div>
@@ -722,7 +855,7 @@ But, you can try it out now by replacing all `@nuxt/ui` occurrences by `@nuxt/ui
       <div class="absolute -bottom-2 w-4 h-4 rounded-full bg-slate-400 border-4 border-slate-900"></div>
       <heroicons-book-open class="size-4 mb-1" />
       <h3 class="!text-xs mb-1 font-semibold">Documentation</h3>
-      <p class="text-slate-400 !text-[10px]/4 !mt-1 !mb-0">Write documentation for Nuxt UI Pro</p>
+      <p class="text-slate-400 !text-[10px]/4 !mt-1 !mb-0">Write documentation for Nuxt UI Pro v3</p>
     </div>
     <div class="pt-7 relative row-start-2 col-start-6">
       <div class="absolute -top-2 w-4 h-4 rounded-full bg-slate-400 border-4 border-slate-900"></div>
@@ -732,7 +865,7 @@ But, you can try it out now by replacing all `@nuxt/ui` occurrences by `@nuxt/ui
         <li class="!text-[10px]/2">Templates</li>
         <li class="!text-[10px]/2">nuxt.com</li>
         <li class="!text-[10px]/2">Modules</li>
-        <li class="!text-[10px]/2">Nuxt Hub</li>
+        <li class="!text-[10px]/2">NuxtHub</li>
         <li class="!text-[10px]/2">Nuxt Studio</li>
       </ul>
     </div>
