@@ -148,11 +148,11 @@ For the past 7 months, we've been working on rebuilding Nuxt UI from the ground 
 
 ---
 
-# Installation -> Nuxt
+# Installation → Nuxt
 
 <v-clicks>
 
-1. Install the `v3.0.0-alpha` package
+1. Install the v3 alpha package
 
 <v-after>
 ```bash
@@ -207,7 +207,81 @@ And that's it! You can now start using all the new components.
 
 ---
 
-# Installation -> Vue
+# Installation → Vue
+
+<v-clicks>
+
+1. Install the v3 alpha package
+
+<v-after>
+```bash
+pnpm add @nuxt/ui@next
+```
+</v-after>
+
+2. Add the `@nuxt/ui` vite plugin in your `vite.config.ts`
+
+<v-after>
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import ui from '@nuxt/ui/vite'
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    ui()
+  ]
+})
+```
+</v-after>
+
+</v-clicks>
+
+<!--
+Last week, we released the alpha.8 which lets you use Nuxt UI in any Vue project without Nuxt.
+
+[click] You can install it using the NPM `next` tag
+
+[click] Then, you add the `@nuxt/ui` vite plugin in your `vite.config.ts`
+-->
+
+---
+
+# Installation → Vue
+
+3. Add the `@nuxt/ui` Vue plugin in your `main.ts`
+
+<v-after>
+```ts
+import { createApp } from 'vue'
+import ui from '@nuxt/ui/vue-plugin'
+import App from './App.vue'
+
+const app = createApp(App)
+app.use(ui)
+app.mount('#app')
+```
+</v-after>
+
+<v-clicks>
+
+4. Import `tailwindcss` and `@nuxt/ui` in your CSS
+
+<v-after>
+```css
+@import "tailwindcss";
+@import "@nuxt/ui";
+```
+</v-after>
+
+</v-clicks>
+
+<!--
+You add the `@nuxt/ui` Vue plugin in your `main.ts`
+
+[click] Finally, you import `tailwindcss` and `@nuxt/ui` in your CSS
+-->
 
 ---
 
@@ -860,14 +934,8 @@ But, you can try it out now by replacing all `@nuxt/ui` occurrences by `@nuxt/ui
     <div class="pt-7 relative row-start-2 col-start-6">
       <div class="absolute -top-2 w-4 h-4 rounded-full bg-slate-400 border-4 border-slate-900"></div>
       <heroicons-computer-desktop class="size-4 mb-1" />
-      <h3 class="!text-xs mb-1 font-semibold">Migrate everything</h3>
-      <ul class="text-slate-400 !mt-1 -mb-9">
-        <li class="!text-[10px]/2">Templates</li>
-        <li class="!text-[10px]/2">nuxt.com</li>
-        <li class="!text-[10px]/2">Modules</li>
-        <li class="!text-[10px]/2">NuxtHub</li>
-        <li class="!text-[10px]/2">Nuxt Studio</li>
-      </ul>
+      <h3 class="!text-xs mb-1 font-semibold">Migration</h3>
+      <p class="text-slate-400 !text-[10px]/4 !mt-1 !mb-0">Write guide and migrate nuxt.com, ui.nuxt.com, hub.nuxt.com, nuxt.studio, etc.</p>
     </div>
     <div class="relative row-start-1 col-start-7">
       <div class="absolute -bottom-2 w-4 h-4 rounded-full bg-slate-400 border-4 border-slate-900"></div>
