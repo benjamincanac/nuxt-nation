@@ -111,18 +111,19 @@ Nuxt UI is a Vue component library, it comes with over 50 accessible and customi
 
 # What's new in Nuxt UI v3?
 
-<p class="text-xl text-slate-400">Rebuilt from the ground up, bringing significant improvements and powerful new features.</p>
+<p class="text-xl text-slate-400 !mb-8">Rebuilt from the ground up, bringing significant improvements and powerful new features.</p>
 
 <v-clicks>
 
-- <custom-radix-vue class="size-6" /> Radix Vue
-- <img src="/tanstack.png" alt="TanStack Table" class="size-6 inline rounded-full" /> TanStack Table
-- <custom-embla-carousel class="size-6" /> Embla Carousel
-- <logos-tailwindcss-icon class="size-6" /> Tailwind CSS v4
-- <custom-tailwind-variants class="size-6" /> Tailwind Variants
-- <logos-vue class="size-6" /> Vue compatibility
-- <logos-nuxt-icon class="size-6" /> Nuxt Devtools
-- <logos-typescript-icon class="size-6" /> TypeScript integration
+- <custom-radix-vue class="size-6 mr-1" /> Radix Vue
+- <img src="/tanstack.png" alt="TanStack Table" class="size-6 mr-1 inline rounded-full" /> TanStack Table
+- <custom-embla-carousel class="size-6 mr-1" /> Embla Carousel
+- <logos-tailwindcss-icon class="size-6 mr-1" /> Tailwind CSS v4
+- <custom-tailwind-variants class="size-6 mr-1" /> Tailwind Variants
+- <logos-vue class="size-6 mr-1" /> Vue compatibility
+- <logos-nuxt-icon class="size-6 mr-1" /> Nuxt Devtools
+- <logos-typescript-icon class="size-6 mr-1" /> TypeScript integration
+- <logos-vitest class="size-6 mr-1" /> Complete test suite
 
 </v-clicks>
 
@@ -143,7 +144,9 @@ For the past 7 months, we've been working on rebuilding Nuxt UI from the ground 
 
 [click] We've also integrated the Nuxt Devtools to give you a better developer experience. You can now preview and edit the Nuxt UI components props in the devtools and copy the generated code in your app once you're done.
 
-[click] And we took TypeScript to the next level with full auto-completion for component props based on your theme, intelligent suggestions for your app.config.ts theme configuration and improved type inference for slots and events with generic based components.
+[click] We took TypeScript to the next level with full auto-completion for component props based on your theme, intelligent suggestions for your app.config.ts theme configuration and improved type inference for slots and events with generic based components.
+
+[click] We've also made sure to cover all components with tests to ensure stability and reliability. We have more than 900 tests for Nuxt and for Vue.
 -->
 
 ---
@@ -566,7 +569,7 @@ However, to do like in Nuxt UI v2, you can use define the color aliases as Tailw
 <!--
 Nuxt UI provides a set of design tokens to style your components globally.
 
-[click] These tokens offer control over text, background, borders and radius.
+[click] These tokens offer control over texts, backgrounds, borders and are used all across the theme.
 
 [click] You can override these tokens in your CSS for light and dark mode.
 -->
@@ -584,16 +587,16 @@ Nuxt UI provides a set of design tokens to style your components globally.
 ```vue
 <!-- UCard.vue -->
 <template>
-  <div :class="ui.root({ class: [props.class, props.ui?.root] })">
-    <div :class="ui.header({ class: props.ui?.header })">
+  <div :class="ui.root()">
+    <div :class="ui.header()">
       <slot name="header" />
     </div>
 
-    <div :class="ui.body({ class: props.ui?.body })">
+    <div :class="ui.body()">
       <slot />
     </div>
 
-    <div :class="ui.footer({ class: props.ui?.footer })">
+    <div :class="ui.footer()">
       <slot name="footer" />
     </div>
   </div>
@@ -601,7 +604,6 @@ Nuxt UI provides a set of design tokens to style your components globally.
 ```
 
 ```ts
-// UCard theme
 export default {
   slots: {
     root: 'bg-[var(--ui-bg)] ring ring-[var(--ui-border)] rounded-[calc(var(--ui-radius)*2)]',
@@ -621,9 +623,9 @@ Nuxt UI components are styled using the Tailwind Variants API.
 
 [click] They have slots which represents distinct HTML element or section within the component.
 
-Let's take the Card component as an example which has a root div and 3 children slots.
+Let's take the Card component as an example which has a root div and 3 slots.
 
-[click] Its theme is defined by the `root`, `header`, `body` and `footer` slots.
+[click] Its theme defines the styles for the `root`, `header`, `body` and `footer` slots.
 -->
 
 ---
@@ -635,7 +637,6 @@ Let's take the Card component as an example which has a root div and 3 children 
 <v-after>
 
 ```ts
-// UAvatar theme
 export default {
   slots: {
     root: 'inline-flex items-center justify-center rounded-full bg-[var(--ui-bg-elevated)]'
@@ -680,9 +681,10 @@ The size of the `root` slot will be changed based on the `size` prop value.
 ```ts
 export default defineAppConfig({
   ui: {
-    button: {
+    card: {
       slots: {
-        base: 'font-bold'
+        root: 'bg-[var(--ui-bg-elevated)]',
+        body: 'sm:p-8'
       }
     }
   }
@@ -690,14 +692,14 @@ export default defineAppConfig({
 ```
 
 ```vue
-<UButton :ui="{ base: 'font-bold rounded-full' }">
+<UButton :ui="{ body: 'sm:p-12' }">
   Button
 </UButton>
 ```
 
 ```vue
 <template>
-  <UButton class="font-bold rounded-full">
+  <UButton class="bg-[var(--ui-bg-accented)]">
     Button
   </UButton>
 </template>
@@ -708,13 +710,13 @@ export default defineAppConfig({
 <!--
 Now that you know how the components theme is defined, you have 3 ways to customize it.
 
+I want to highlight that `tailwind-merge` is used under the hood, so the classes you provide are smartly merged.
+
 [click] You can override them globally in your `app.config.ts`, where you define the `slots` and `variants`.
 
-[click] You can override a component's slots using the `ui` prop.
+[click] You can override a component's slots using the `ui` prop, this will have precedence over the global configuration.
 
 [click] And finally, you can use the `class` prop to override the root slot of the component.
-
-Do note that Tailwind Variants uses the `tailwind-merge` library under the hood, so the classes you provide will be smartly merged.
 -->
 
 ---
