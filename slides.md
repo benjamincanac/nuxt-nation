@@ -130,13 +130,13 @@ Nuxt UI is a Vue component library, it comes with over 50 accessible and customi
 <!--
 For the past 7 months, we've been working on rebuilding Nuxt UI from the ground up. We now use
 
-[click] Radix Vue as our core component foundation. This gives us access to rock-solid primitives to build on, it fixed our Headless UI pain points and unlocked tons of new features. Radix Vue growing popularity within the Vue community makes it future-proof and a perfect fit for Nuxt UI.
+[click] Radix Vue as our core component foundation. This gives us access to rock-solid primitives to build on, it fixed our Headless UI pain points and unlocked tons of new features.
 
-[click] We now also use TanStack Table for our table component. It's a powerful table library with pagination, sorting, filtering, and more.
+[click] We now also use TanStack Table for our Table component. It's a a Headless UI library for building powerful tables with lots of features.
 
-[click] We use Embla Carousel for our new carousel component. It's a flexible, powerful, and fast carousel library with native lazy-loading, parallax, and infinite scrolling.
+[click] We use Embla Carousel for our Carousel component. It's a usel library with great fluid motion and awesome swipe precision
 
-[click] We've upgraded to Tailwind CSS v4 alpha which was announced in March 2024. It's up to 10x faster with a new Rust-powered engine, has a unified CSS toolchain with Lightning CSS built-in, and introduces a CSS-first configuration approach using native CSS features.
+[click] We've upgraded to Tailwind CSS v4 alpha which was announced in March 2024. It's up to 10x faster and introduces a CSS-first configuration approach using native CSS features.
 
 [click] We've adopted Tailwind Variants, a powerful variant API library for TailwindCSS, to manage our design system. It provides first-class variants support, responsive variants, slots for component composition, and automatic class conflict resolution - making styling way easier and more maintainable.
 
